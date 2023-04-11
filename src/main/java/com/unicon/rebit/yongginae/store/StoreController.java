@@ -28,4 +28,11 @@ public class StoreController {
         return responseService.getDataResponse(stores);
     }
 
+    @GetMapping("/store/takeout/{store_id}")
+    public DataResponse<StoreAddressRes> getStoreAddress(@PathVariable("store_id") Long store_id) {
+        StoreAddressRes res = storeService.findAddress(store_id);
+        return responseService.getDataResponse(res);
+    }
+
+
 }

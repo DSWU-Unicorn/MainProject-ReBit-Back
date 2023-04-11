@@ -27,4 +27,8 @@ public class StoreService {
         return stores.stream().map(StoreCategoryRes::new).collect(Collectors.toList());
     }
 
+    public StoreAddressRes findAddress (Long storeId) {
+        Store store = storeRepository.findOne(storeId);
+        return new StoreAddressRes(store.getAddress());
+    }
 }
