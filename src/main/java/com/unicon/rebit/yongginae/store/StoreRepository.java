@@ -29,4 +29,9 @@ public class StoreRepository {
                 .getResultList();
     }
 
+    public List<Store> findStore(String storeName) {
+        return em.createQuery("select s from Store s where s.storeName like :storeName", Store.class)
+                .setParameter("storeName", "%"+storeName+"%")
+                .getResultList();
+    }
 }
