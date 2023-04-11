@@ -22,6 +22,9 @@ public class StoreService {
         return new StoreRes(store.getStoreName(), store.getCategory1(), store.getCategory2(), store.getAddress(), store.getTel());
     }
 
-
+    public List<StoreCategoryRes> findCategory(String category1, String category2) {
+        List<Store> stores = storeRepository.findAddress(category1, category2);
+        return stores.stream().map(StoreCategoryRes::new).collect(Collectors.toList());
+    }
 
 }

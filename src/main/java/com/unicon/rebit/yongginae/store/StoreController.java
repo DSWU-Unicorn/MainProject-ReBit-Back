@@ -22,4 +22,10 @@ public class StoreController {
         return responseService.getDataResponse(res);
     }
 
+    @GetMapping("/store/{category1}/{category2}")
+    public DataResponse<List<StoreCategoryRes>> getStoreAddressByCategory(@PathVariable("category1") String category1, @PathVariable("category2") String category2) {
+        List<StoreCategoryRes> stores = storeService.findCategory(category1, category2);
+        return responseService.getDataResponse(stores);
+    }
+
 }

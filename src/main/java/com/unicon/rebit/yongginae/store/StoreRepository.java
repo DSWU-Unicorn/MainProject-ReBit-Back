@@ -15,4 +15,12 @@ public class StoreRepository {
     public Store findOne(Long id) {
         return em.find(Store.class, id);
     }
+
+    public List<Store> findAddress(String category1, String category2) {
+        return em.createQuery("select s from Store s where s.category1 = :category1 and s.category2 =:category2", Store.class)
+                .setParameter("category1", category1)
+                .setParameter("category2", category2)
+                .getResultList();
+    }
+
 }
