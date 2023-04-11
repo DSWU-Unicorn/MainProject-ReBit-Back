@@ -31,4 +31,9 @@ public class StoreService {
         Store store = storeRepository.findOne(storeId);
         return new StoreAddressRes(store.getAddress());
     }
+
+    public List<StoreAroundAddressRes> findAroundAddress(String search) {
+        List<Store> stores = storeRepository.findAroundAddress(search);
+        return stores.stream().map(StoreAroundAddressRes::new).collect(Collectors.toList());
+    }
 }

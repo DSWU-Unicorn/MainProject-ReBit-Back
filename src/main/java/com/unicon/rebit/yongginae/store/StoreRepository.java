@@ -23,4 +23,10 @@ public class StoreRepository {
                 .getResultList();
     }
 
+    public List<Store> findAroundAddress(String address) {
+        return em.createQuery("select s from Store s where s.address like :address", Store.class)
+                .setParameter("address", "%"+address+"%")
+                .getResultList();
+    }
+
 }

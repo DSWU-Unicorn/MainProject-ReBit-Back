@@ -34,5 +34,11 @@ public class StoreController {
         return responseService.getDataResponse(res);
     }
 
+    // 마크용 주소 검색
+    @GetMapping("/store/mark/{search}")
+    public DataResponse<List<StoreAroundAddressRes>> getStoreAroundAddress(@PathVariable("search") String search) {
+        List<StoreAroundAddressRes> stores = storeService.findAroundAddress(search);
+        return responseService.getDataResponse(stores);
+    }
 
 }
