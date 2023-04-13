@@ -21,4 +21,6 @@ public class Cardnews {
     private String image_src;
 
     private Date date;
+
+    private boolean isUsed;
 }

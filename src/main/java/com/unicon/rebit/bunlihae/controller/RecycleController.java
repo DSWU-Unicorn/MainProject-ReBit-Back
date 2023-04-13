@@ -3,9 +3,9 @@ package com.unicon.rebit.bunlihae.controller;
 import com.unicon.rebit.bunlihae.domain.Guide;
 import com.unicon.rebit.bunlihae.domain.Recycle;
 import com.unicon.rebit.bunlihae.service.RecycleService;
-//import com.unicon.rebit.response.CommonResponse;
-//import com.unicon.rebit.response.DataResponse;
-//import com.unicon.rebit.response.ResponseService;
+import com.unicon.rebit.yongginae.configure.response.CommonResponse;
+import com.unicon.rebit.yongginae.configure.response.DataResponse;
+import com.unicon.rebit.yongginae.configure.response.ResponseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class RecycleController {
 
-    /*
+
     private final RecycleService recycleService;
     private final ResponseService responseService;
 
@@ -40,6 +40,6 @@ public class RecycleController {
         return responseService.getDataResponse(recycleByRegion);
     }
 
-     */
+
 
 }

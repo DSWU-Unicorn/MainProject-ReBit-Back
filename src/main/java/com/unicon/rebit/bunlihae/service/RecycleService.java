@@ -2,12 +2,12 @@ package com.unicon.rebit.bunlihae.service;
 
 import com.unicon.rebit.bunlihae.domain.Guide;
 import com.unicon.rebit.bunlihae.domain.Recycle;
-import com.unicon.rebit.bunlihae.domain.User;
 import com.unicon.rebit.bunlihae.repository.GuideRepository;
 import com.unicon.rebit.bunlihae.repository.RecycleRepository;
-import com.unicon.rebit.bunlihae.repository.UserRepository;
-//import com.unicon.rebit.response.exception.CustomException;
-//import com.unicon.rebit.response.exception.CustomExceptionStatus;
+import com.unicon.rebit.yongginae.configure.response.exception.CustomException;
+import com.unicon.rebit.yongginae.configure.response.exception.CustomExceptionStatus;
+import com.unicon.rebit.yongginae.user.User;
+import com.unicon.rebit.yongginae.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,7 +23,7 @@ public class RecycleService {
     private final GuideRepository guideRepository;
 
 
-    /*
+
     public Recycle getRecycleByDataLabel(String label) {
         Recycle recycle = recycleRepository.findByDataLabel(label)
                 .orElseThrow(() -> new CustomException(CustomExceptionStatus.RECYCLE_NOT_FOUND));
@@ -45,5 +45,5 @@ public class RecycleService {
         return byRegion;
     }
 
-     */
+
 }
