@@ -1,11 +1,11 @@
 package com.unicon.rebit.bunlihae.service;
 
 import com.unicon.rebit.bunlihae.domain.Tip;
-import com.unicon.rebit.bunlihae.domain.User;
 import com.unicon.rebit.bunlihae.repository.TipRepository;
-import com.unicon.rebit.bunlihae.repository.UserRepository;
-//import com.unicon.rebit.response.exception.CustomException;
-//import com.unicon.rebit.response.exception.CustomExceptionStatus;
+import com.unicon.rebit.yongginae.configure.response.exception.CustomException;
+import com.unicon.rebit.yongginae.configure.response.exception.CustomExceptionStatus;
+import com.unicon.rebit.yongginae.user.User;
+import com.unicon.rebit.yongginae.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,7 +30,7 @@ public class TipService {
     }
 
 
-    /*
+
     @Transactional
     public int postUserWithPoint(Long id) {
         User user = userRepository.findById(id)
@@ -39,5 +39,5 @@ public class TipService {
         return user.getPoint();
     }
 
-    */
+
 }

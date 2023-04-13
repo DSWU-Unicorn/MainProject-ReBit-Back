@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -27,5 +28,12 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<UserComment> userComments = new ArrayList<>();
+
+    @ColumnDefault("0")
+    private int point;
+
+    public void postPoint(int point) {
+        this.point += point;
+    }
 
 }
