@@ -31,6 +31,7 @@ public class Store {
 
     private String tel;
 
+    private String store_photo;
 
     @OneToMany(mappedBy = "store")
     private List<Review> review = new ArrayList<>();

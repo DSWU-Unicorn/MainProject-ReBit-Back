@@ -15,6 +15,7 @@ public class StoreSearchRes {
     private String category1;
     private String category2;
     private String tel;
+    private String store_photo;
 
     public StoreSearchRes(Store store) {
         storeName = store.getStoreName();
@@ -22,6 +23,7 @@ public class StoreSearchRes {
         category1 = store.getCategory1();
         category2 = store.getCategory2();
         tel = store.getTel();
+        store_photo = store.getStore_photo();
     }
 }
 
