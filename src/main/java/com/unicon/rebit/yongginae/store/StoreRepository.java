@@ -30,7 +30,7 @@ public class StoreRepository {
     }
 
     public List<Store> findStore(String storeName) {
-        return em.createQuery("select s from Store s where s.storeName like :storeName", Store.class)
+        return em.createQuery("SELECT s FROM Store s LEFT JOIN s.review r WHERE s.storeName like :storeName", Store.class)
                 .setParameter("storeName", "%"+storeName+"%")
                 .getResultList();
     }

@@ -41,10 +41,10 @@ public class StoreController {
         return responseService.getDataResponse(stores);
     }
 
+    // 가게 검색
     @GetMapping("/store/search/{search}")
-    public DataResponse<List<StoreSearchRes>> getStore(@PathVariable("search") String search) {
+    public DataResponse<List<StoreSearchRes>> getStore (@PathVariable("search") String search) {
         List<StoreSearchRes> stores = storeService.findStore(search);
         return responseService.getDataResponse(stores);
     }
-
 }
