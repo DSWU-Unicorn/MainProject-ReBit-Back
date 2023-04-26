@@ -42,4 +42,8 @@ public class StoreService {
         return stores.stream().map(store -> new StoreSearchRes(store, store.getReview().stream().map(ReviewSearchRes::new).collect(Collectors.toList()))).collect(Collectors.toList());
     }
 
+    public StoreSearchRes findStoreDetail(Long store_id) {
+        Store store = storeRepository.findStoreDetail(store_id);
+        return new StoreSearchRes(store, store.getReview().stream().map(ReviewSearchRes::new).collect(Collectors.toList()));
+    }
 }

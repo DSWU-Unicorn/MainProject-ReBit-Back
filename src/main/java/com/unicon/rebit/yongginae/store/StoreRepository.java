@@ -34,4 +34,10 @@ public class StoreRepository {
                 .setParameter("storeName", "%"+storeName+"%")
                 .getResultList();
     }
+
+    public Store findStoreDetail(Long storeId) {
+        return em.createQuery("SELECT s FROM Store s LEFT JOIN s.review r WHERE s.id =: id ", Store.class)
+                .setParameter("id", storeId)
+                .getSingleResult();
+    }
 }
