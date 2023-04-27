@@ -2,6 +2,7 @@ package com.unicon.rebit.yongginae.store;
 
 import com.unicon.rebit.yongginae.menu.Menu;
 import com.unicon.rebit.yongginae.review.Review;
+import com.unicon.rebit.yongginae.userComment.UserComment;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -38,5 +39,8 @@ public class Store {
 
     @OneToOne(mappedBy = "store", fetch = FetchType.LAZY)
     private Menu menu;
+
+    @OneToMany(mappedBy = "store")
+    private List<UserComment> userComments = new ArrayList<>();
 
 }

@@ -5,11 +5,10 @@ import com.unicon.rebit.yongginae.configure.response.ResponseService;
 import com.unicon.rebit.yongginae.store.StoreService;
 import com.unicon.rebit.yongginae.store.dto.StoreCategoryRes;
 import com.unicon.rebit.yongginae.store.dto.StoreRes;
+import com.unicon.rebit.yongginae.userComment.dto.UserCommentReq;
 import com.unicon.rebit.yongginae.userComment.dto.UserCommentRes;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,4 +26,9 @@ public class UserCommentController {
 
     }
 
+    @PostMapping("/comments")
+    public DataResponse<Long> addComment(@RequestBody UserCommentReq userCommentReq) {
+        Long comment_id = userCommentService.addComment(userCommentReq);
+        return responseService.getDataResponse(comment_id);
+    }
 }
