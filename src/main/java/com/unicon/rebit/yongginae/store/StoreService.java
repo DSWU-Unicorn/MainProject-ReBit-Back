@@ -1,8 +1,8 @@
 package com.unicon.rebit.yongginae.store;
 
+import com.unicon.rebit.yongginae.review.ReviewSearchRes;
 import com.unicon.rebit.yongginae.store.dto.*;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,7 +39,11 @@ public class StoreService {
 
     public List<StoreSearchRes> findStore(String storeName) {
         List<Store> stores = storeRepository.findStore(storeName);
-        return stores.stream().map(StoreSearchRes::new).collect(Collectors.toList());
+        return stores.stream().map(store -> new StoreSearchRes(store, store.getReview().stream().map(ReviewSearchRes::new).collect(Collectors.toList()))).collect(Collectors.toList());
     }
 
+    public StoreSearchRes findStoreDetail(Long store_id) {
+        Store store = storeRepository.findStoreDetail(store_id);
+        return new StoreSearchRes(store, store.getReview().stream().map(ReviewSearchRes::new).collect(Collectors.toList()));
+    }
 }

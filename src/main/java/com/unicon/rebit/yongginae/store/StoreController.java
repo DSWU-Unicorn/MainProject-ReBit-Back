@@ -41,10 +41,17 @@ public class StoreController {
         return responseService.getDataResponse(stores);
     }
 
+    // 가게 검색
     @GetMapping("/store/search/{search}")
-    public DataResponse<List<StoreSearchRes>> getStore(@PathVariable("search") String search) {
+    public DataResponse<List<StoreSearchRes>> getStore (@PathVariable("search") String search) {
         List<StoreSearchRes> stores = storeService.findStore(search);
         return responseService.getDataResponse(stores);
     }
 
+    // 가게 정보 반환 by store_id
+    @GetMapping("/store/info/{store_id}")
+    public DataResponse<StoreSearchRes> getStoreDetailInfo (@PathVariable("store_id") Long store_id) {
+        StoreSearchRes res = storeService.findStoreDetail(store_id);
+        return responseService.getDataResponse(res);
+    }
 }
