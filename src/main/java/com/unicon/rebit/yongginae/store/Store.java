@@ -34,6 +34,10 @@ public class Store {
 
     private String store_photo;
 
+    private double starAvg;
+
+    private int reviewNum;
+
     @OneToMany(mappedBy = "store")
     private List<Review> review = new ArrayList<>();
 

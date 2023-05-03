@@ -46,4 +46,9 @@ public class StoreService {
         Store store = storeRepository.findStoreDetail(store_id);
         return new StoreSearchRes(store, store.getReview().stream().map(ReviewSearchRes::new).collect(Collectors.toList()));
     }
+
+    public List<StoreAroundAddressRes> findStoreName(String storeName) {
+        List<Store> stores = storeRepository.findStore(storeName);
+        return stores.stream().map(StoreAroundAddressRes::new).collect(Collectors.toList());
+    }
 }
