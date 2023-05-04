@@ -59,8 +59,8 @@ public class StoreController {
 
     // 가게 검색2 - 반환 값 변경
     @GetMapping("/store/searchName/{search}")
-    public DataResponse<List<StoreAroundAddressRes>> getStoreName (@PathVariable("search") String search) {
-        List<StoreAroundAddressRes> stores = storeService.findStoreName(search);
+    public DataResponse<List<StoreSearchNameRes>> getStoreName (@PathVariable("search") String search) {
+        List<StoreSearchNameRes> stores = storeService.findStoreName(search);
         return responseService.getDataResponse(stores);
     }
 
