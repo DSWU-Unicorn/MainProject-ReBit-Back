@@ -1,11 +1,13 @@
 package com.unicon.rebit.yongginae.store;
 
+import com.unicon.rebit.yongginae.configure.response.CommonResponse;
 import com.unicon.rebit.yongginae.configure.response.DataResponse;
 import com.unicon.rebit.yongginae.configure.response.ResponseService;
 import com.unicon.rebit.yongginae.store.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -60,6 +62,13 @@ public class StoreController {
     public DataResponse<List<StoreAroundAddressRes>> getStoreName (@PathVariable("search") String search) {
         List<StoreAroundAddressRes> stores = storeService.findStoreName(search);
         return responseService.getDataResponse(stores);
+    }
+
+    // 포장시 포인트 증가 로직
+    @PostMapping("/store/takeout/{user_id}")
+    public CommonResponse postUserWithPoint(@PathVariable(value = "user_id") Long user_id) {
+        int point = storeService.postUserWithPoint(user_id);
+        return responseService.getDataResponse(point);
     }
 
 

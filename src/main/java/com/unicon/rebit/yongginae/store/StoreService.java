@@ -1,7 +1,11 @@
 package com.unicon.rebit.yongginae.store;
 
+import com.unicon.rebit.yongginae.configure.response.exception.CustomException;
+import com.unicon.rebit.yongginae.configure.response.exception.CustomExceptionStatus;
 import com.unicon.rebit.yongginae.review.ReviewSearchRes;
 import com.unicon.rebit.yongginae.store.dto.*;
+import com.unicon.rebit.yongginae.user.User;
+import com.unicon.rebit.yongginae.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +19,7 @@ import java.util.stream.Collectors;
 public class StoreService {
 
     private final StoreRepository storeRepository;
+    private final UserRepository userRepository;
 //    private final Store store;
 
     public StoreRes findOne(Long storeId) {
@@ -50,5 +55,13 @@ public class StoreService {
     public List<StoreAroundAddressRes> findStoreName(String storeName) {
         List<Store> stores = storeRepository.findStore(storeName);
         return stores.stream().map(StoreAroundAddressRes::new).collect(Collectors.toList());
+    }
+
+    @Transactional
+    public int postUserWithPoint(Long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new CustomException(CustomExceptionStatus.ACCOUNT_NOT_FOUND));
+        user.postPoint(300);
+        return user.getPoint();
     }
 }
