@@ -71,5 +71,11 @@ public class StoreController {
         return responseService.getDataResponse(point);
     }
 
+    // 리뷰 리스트 반환
+    @GetMapping("/store/reviews/{store_id}")
+    public DataResponse<List<StoreReviewsRes>> getReviews (@PathVariable("store_id") Long store_id) {
+        List<StoreReviewsRes> stores = storeService.findReviews(store_id);
+        return responseService.getDataResponse(stores);
+    }
 
 }

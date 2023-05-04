@@ -6,6 +6,7 @@ import com.unicon.rebit.yongginae.review.ReviewSearchRes;
 import com.unicon.rebit.yongginae.store.dto.*;
 import com.unicon.rebit.yongginae.user.User;
 import com.unicon.rebit.yongginae.user.UserRepository;
+import com.unicon.rebit.yongginae.userComment.UserCommentDao;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,7 +21,7 @@ public class StoreService {
 
     private final StoreRepository storeRepository;
     private final UserRepository userRepository;
-//    private final Store store;
+    private final UserCommentDao userCommentDao;
 
     public StoreRes findOne(Long storeId) {
         Store store = storeRepository.findOne(storeId);
@@ -64,4 +65,15 @@ public class StoreService {
         user.postPoint(300);
         return user.getPoint();
     }
+
+    public List<StoreReviewsRes> findReviews(Long store_id) {
+        try {
+            List<StoreReviewsRes> reviewList = userCommentDao.selectReviews(store_id);
+            return reviewList;
+        } catch (NullPointerException exception) {
+            exception.printStackTrace();
+            throw new CustomException(CustomExceptionStatus.ACCOUNT_NOT_FOUND);
+        }
+    }
+
 }
