@@ -78,4 +78,11 @@ public class StoreController {
         return responseService.getDataResponse(stores);
     }
 
+    // 가게 전체 정보 반환
+    @GetMapping("/store")
+    public DataResponse<List<StoreAllInfoRes>> getAllStoreInfo() {
+        List<StoreAllInfoRes> res = storeService.findAll();
+        return responseService.getDataResponse(res);
+    }
+
 }

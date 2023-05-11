@@ -76,4 +76,8 @@ public class StoreService {
         }
     }
 
+    public List<StoreAllInfoRes> findAll() {
+        List<Store> stores = storeRepository.findAll();
+        return stores.stream().map(store -> new StoreAllInfoRes(store.getId(), store.getStoreName())).collect(Collectors.toList());
+    }
 }
