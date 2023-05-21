@@ -5,7 +5,7 @@ on:
     branches: [ develop ]
 
 env:
-  PROJECT_NAME: unicorn
+  PROJECT_NAME: tikkle-server
   BUCKET_NAME: github-actions-s3-bucket-ec2
   CODE_DEPLOY_APP_NAME: codedeploy-app
   DEPLOYMENT_GROUP_NAME: codedeploy-deployment-group
