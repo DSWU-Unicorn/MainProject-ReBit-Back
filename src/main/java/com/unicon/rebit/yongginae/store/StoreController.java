@@ -1,11 +1,13 @@
 package com.unicon.rebit.yongginae.store;
 
+import com.unicon.rebit.yongginae.configure.response.CommonResponse;
 import com.unicon.rebit.yongginae.configure.response.DataResponse;
 import com.unicon.rebit.yongginae.configure.response.ResponseService;
 import com.unicon.rebit.yongginae.store.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -34,7 +36,7 @@ public class StoreController {
         return responseService.getDataResponse(res);
     }
 
-    // 마크용 주소 검색
+    // 마커용 주소 검색
     @GetMapping("/store/mark/{search}")
     public DataResponse<List<StoreAroundAddressRes>> getStoreAroundAddress(@PathVariable("search") String search) {
         List<StoreAroundAddressRes> stores = storeService.findAroundAddress(search);
@@ -54,4 +56,33 @@ public class StoreController {
         StoreSearchRes res = storeService.findStoreDetail(store_id);
         return responseService.getDataResponse(res);
     }
+
+    // 가게 검색2 - 반환 값 변경
+    @GetMapping("/store/searchName/{search}")
+    public DataResponse<List<StoreSearchNameRes>> getStoreName (@PathVariable("search") String search) {
+        List<StoreSearchNameRes> stores = storeService.findStoreName(search);
+        return responseService.getDataResponse(stores);
+    }
+
+    // 포장시 포인트 증가 로직
+    @PostMapping("/store/takeout/{user_id}")
+    public CommonResponse postUserWithPoint(@PathVariable(value = "user_id") Long user_id) {
+        int point = storeService.postUserWithPoint(user_id);
+        return responseService.getDataResponse(point);
+    }
+
+    // 리뷰 리스트 반환
+    @GetMapping("/store/reviews/{store_id}")
+    public DataResponse<List<StoreReviewsRes>> getReviews (@PathVariable("store_id") Long store_id) {
+        List<StoreReviewsRes> stores = storeService.findReviews(store_id);
+        return responseService.getDataResponse(stores);
+    }
+
+    // 가게 전체 정보 반환
+    @GetMapping("/store")
+    public DataResponse<List<StoreAllInfoRes>> getAllStoreInfo() {
+        List<StoreAllInfoRes> res = storeService.findAll();
+        return responseService.getDataResponse(res);
+    }
+
 }

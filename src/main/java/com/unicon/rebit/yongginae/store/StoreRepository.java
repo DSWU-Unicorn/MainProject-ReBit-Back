@@ -40,4 +40,10 @@ public class StoreRepository {
                 .setParameter("id", storeId)
                 .getSingleResult();
     }
+
+    public List<Store> findAll() {
+        return em.createQuery("SELECT s FROM Store s", Store.class)
+                .getResultList();
+    }
+
 }
